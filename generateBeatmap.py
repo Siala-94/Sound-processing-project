@@ -1,6 +1,6 @@
 import aubio
 
-def generateBeatmap(path, method, outPath):
+def generateBeatmap(path, method, threshold, outPath):
     win_s = 512                 # fft size
     hop_s = win_s // 2 
     #path = "crab_rave.wav"
@@ -8,7 +8,7 @@ def generateBeatmap(path, method, outPath):
     samplerate = s.samplerate
 
     o = aubio.onset(method)
-    o.set_threshold(0.2)
+    o.set_threshold(threshold)
 
     # list of onsets, in samples
     timestamps = []
